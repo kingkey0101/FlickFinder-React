@@ -1,4 +1,6 @@
 import React from "react";
+import Searchbar from "./Searchbar";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -9,17 +11,11 @@ const Header = () => {
           className="logo__img"
           alt="logo"
         />
-        <h1 className="logo">🎬Flickfinder🍿</h1>
-        <div className="search__bar">
-          <form id="search__form">
-            <input
-              type="text"
-              id="search__input"
-              placeholder="Search movies or TV shows..."
-            />
-            <button type="submit">Search</button>
-          </form>
-        </div>
+        <Link to={"/"}>
+          <h1 className="logo">🎬Flickfinder🍿</h1>
+        </Link>
+
+        <Searchbar />
       </div>
     </header>
   );
