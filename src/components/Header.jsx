@@ -2,7 +2,7 @@ import React from "react";
 import Searchbar from "./Searchbar";
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ setQuery }) => {
   return (
     <header id="header__background">
       <div className="header__center">
@@ -15,7 +15,7 @@ const Header = () => {
           <h1 className="logo">🎬Flickfinder🍿</h1>
         </Link>
 
-        <Searchbar />
+        <Searchbar setQuery={setQuery} />
       </div>
     </header>
   );
