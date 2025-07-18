@@ -1,5 +1,6 @@
 import React from "react";
 
+
 const Searchbar = () => {
   return (
     <div className="search__bar">
