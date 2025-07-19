@@ -22,7 +22,7 @@ const Home = () => {
     try {
       const res = await fetch(endpoint);
       const data = await res.json();
-      setMovies(data.results);
+      setMovies(data.res);
     } catch (error) {
       console.error(error);
     } finally {

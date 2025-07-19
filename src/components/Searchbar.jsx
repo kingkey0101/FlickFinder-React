@@ -1,16 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
+const Searchbar = ({ setQuery }) => {
+  const [searchText, setSearchText] = useState("");
+  const navigate = useNavigate();
 
-const Searchbar = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (searchText.trim()) {
+      navigate(`search/${encodeURIComponent(searchText)}`);
+    }
+    // setQuery(searchText);
+  };
   return (
     <div className="search__bar">
-      <form id="search__form">
+      <form
+        id="search__form"
+        onSubmit={handleSubmit}
+        className="flex items-center gap-2"
+      >
         <input
           type="text"
           id="search__input"
-          placeholder="Search movies or TV shows..."
+          placeholder="Search movies"
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
+          className="px-4 py-2 rounded-lg bg-white/10 text-white backdrop-blur"
         />
-        <button type="submit">Search</button>
+        <button
+          type="submit"
+          className="bg-green-500 hover:bg-green-600 px-4 py-2 rounded-lg text-white"
+        >
+          Search
+        </button>
       </form>
     </div>
   );

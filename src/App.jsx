@@ -1,16 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
-import { BrowserRouter as Router, Route, Routes  } from 'react-router-dom';
-import Home from './pages/Home';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import MovieDetails from "./pages/MovieDetails";
+import SearchResults from "./components/SearchResults";
 
 function App() {
   return (
-   
     <Router>
-      <div className='app'>
+      <div className="app">
         <Routes>
-          <Route path='/' element={<Home />}></Route>
-          <Route path='/'></Route>
+          <Route path="/" element={<Home />} />
+          <Route path="/search/:query" element={<SearchResults />} />
+          <Route path="/movie/:id" element={<MovieDetails />} />
         </Routes>
       </div>
     </Router>
