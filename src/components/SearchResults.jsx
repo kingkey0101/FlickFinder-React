@@ -36,18 +36,27 @@ const SearchResults = () => {
   }, [query]);
 
   const handleBrowseMore = () => {
-    const scrollY = window.scrollY;
-    setTimeout(()=> window.scrollTo(0, scrollY), 0)
-    setVisibleContent((prev) => prev + 6); //show 6 more
+    const currentScrollY = window.scrollY;
+    setLoading(true);
+
+    setTimeout(() => {
+      setVisibleContent((prev) => prev + 6); //show 6 more
+      setLoading(false);
+      setTimeout(() => window.scrollTo(0, currentScrollY), 0);
+    }, 800);
   };
 
   return (
     <div className="p-4">
-      <Header />
+      <div className="m-8">
+        <Header />
+      </div>
       <h2 className="text-xl text-white mb-4">Search Results for '{query}'</h2>
 
       {loading ? (
-        <Spinner />
+        <div className="flex items-center justify-center h-[50vh]">
+          <Spinner />
+        </div>
       ) : (
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
           {results.slice(0, visibleContent).map((movie) => (
@@ -67,9 +76,9 @@ const SearchResults = () => {
         </div>
       )}
       {!loading && visibleContent < results.length && (
-        <div className="flex justify-center mt-6">
+        <div className="flex justify-center mt-4 px-4">
           <button
-            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+            className="w-full sm:w-auto bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 mb-8 rounded text-sm sm:text-base"
             onClick={handleBrowseMore}
           >
             Browse More

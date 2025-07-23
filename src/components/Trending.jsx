@@ -14,7 +14,6 @@ const Trending = () => {
       .then((data) => setMovies(data.results))
       .catch((err) => console.error("Error fetching trending movies", err));
   }, []);
-  
 
   return (
     <section className="trending">
@@ -25,15 +24,15 @@ const Trending = () => {
           <MovieCard
             key={movie.id}
             movie={movie}
-            className="bg-white/10 backdrop-blur rounded-lg overflow-hidden shadow-lg"
+            className="bg-white/10 backdrop-blur rounded-lg overflow-hidden w-32 sm:w-40 md:w-44 shadow"
           />
         ))}
       </div>
       {/* browse more option */}
-      <div className="text-center mt-4">
-        <Link to='/browse'>
+      <div className="flex justify-center mt-4 px-4">
+        <Link to="/browse:query">
           <button
-            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 mb-8 rounded"
+            className="w-full sm:w-auto bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 mb-8 rounded text-sm sm:text-base"
             onClick={() => setMovies(movies)}
           >
             Browse More

@@ -25,9 +25,7 @@ const BrowseMore = () => {
       .then((res) => res.json())
       .then((data) => {
         setMovies(data.results);
-        setTimeout(() => {
-          setLoading(false);
-        }, 800);
+        setTimeout(() => setLoading(false), 800);
       })
       .catch((err) => {
         console.error("Error fetching movies:", err);
@@ -43,7 +41,9 @@ const BrowseMore = () => {
         <h2 className="text-2xl text-white mb-4">Browse More Movies</h2>
 
         {loading ? (
-          <Spinner />
+          <div className="flex justify-center items-center min-h-screen">
+            <Spinner />
+          </div>
         ) : (
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-4">
             {movies.map((movie) => (
