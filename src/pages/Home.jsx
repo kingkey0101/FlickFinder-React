@@ -22,11 +22,17 @@ const Home = () => {
     try {
       const res = await fetch(endpoint);
       const data = await res.json();
-      setMovies(data.res);
+      setMovies(data.results);
+      setTimeout(() => {
+        setLoading(false)
+      }, 800);
     } catch (error) {
       console.error(error);
     } finally {
       setLoading(false);
+      setTimeout(() => {
+        setLoading(false);
+      }, 800);
     }
   };
   useEffect(() => {
@@ -39,7 +45,7 @@ const Home = () => {
     <>
       <Header setQuery={setQuery} />
       <Hero />
-      {loading ? <Spinner /> : <Trending movies={movies}/>}
+      {loading ? <Spinner /> : <Trending movies={movies} />}
     </>
   );
 };

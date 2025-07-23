@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import MovieCard from "./MovieCard";
+import { Link } from "react-router-dom";
 
 const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
 const BASE_URL = process.env.REACT_APP_TMDB_BASE_URL;
@@ -13,6 +14,7 @@ const Trending = () => {
       .then((data) => setMovies(data.results))
       .catch((err) => console.error("Error fetching trending movies", err));
   }, []);
+  
 
   return (
     <section className="trending">
@@ -29,12 +31,14 @@ const Trending = () => {
       </div>
       {/* browse more option */}
       <div className="text-center mt-4">
-        <button
-          className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
-          onClick={() => setMovies(movies)}
-        >
-          Browse More
-        </button>
+        <Link to='/browse'>
+          <button
+            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 mb-8 rounded"
+            onClick={() => setMovies(movies)}
+          >
+            Browse More
+          </button>
+        </Link>
       </div>
     </section>
   );
