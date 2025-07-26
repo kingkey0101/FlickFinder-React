@@ -8,7 +8,7 @@ export default function MovieCard({ movie, className = "" }) {
   return (
     <Link to={`/movie/${movie.id}`} className="movie-card">
       <img src={img} alt={movie.title} className={`mx-auto ${className}`} />
-      <h3>{movie.title}</h3>
+      <h3 className="mt-2 text-white text-sm sm:text-base text-center">{movie.title}</h3>
     </Link>
   );
 }

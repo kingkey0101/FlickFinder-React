@@ -48,7 +48,7 @@ const SearchResults = () => {
 
   return (
     <div className="p-4">
-      <div className="m-8">
+      <div className="flex justify-center items-center px-4 sm:px-8">
         <Header />
       </div>
       <h2 className="text-xl text-white mb-4">Search Results for '{query}'</h2>
@@ -58,17 +58,19 @@ const SearchResults = () => {
           <Spinner />
         </div>
       ) : (
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3  gap-4 p-4">
           {results.slice(0, visibleContent).map((movie) => (
             <Link to={`/movie/${movie.id}`} key={movie.id}>
-              <div className="bg-white/10 backdrop-blur rounded-lg overflow-hidden shadow-lg">
+              <div className="flex flex-col items-center backdrop-blur rounded-lg overflow-hidden shadow-lg text-center">
                 <img
                   src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                   alt={movie.title}
-                  className="w-full h-auto object-cover"
+                  className="bg-white/10 backdrop-blur rounded-lg w-32 sm:w-40 md:w-44 shadow"
                 />
                 <div className="p-2 text-white text-center">
-                  <h2 className="text-sm font-medium">{movie.title}</h2>
+                  <h2 className="text-sm font-medium text-center">
+                    {movie.title}
+                  </h2>
                 </div>
               </div>
             </Link>

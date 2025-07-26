@@ -47,7 +47,11 @@ const BrowseMore = () => {
         ) : (
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-4">
             {movies.map((movie) => (
-              <MovieCard key={movie.id} movie={movie} />
+              <MovieCard
+                key={movie.id}
+                movie={movie}
+                className="bg-white/10 backdrop-blur rounded-lg overflow-hidden w-32 sm:w-40 md:w-44 shadow"
+              />
             ))}
           </div>
         )}

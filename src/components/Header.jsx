@@ -7,15 +7,16 @@ const Header = ({ setQuery }) => {
     <header id="header__background">
       <div className="header__center">
         <img
-          src="./assets/Flickfinder Logo.png"
+          src="/assets/Flickfinder Logo.png"
           className="logo__img"
           alt="logo"
         />
         <Link to={"/"}>
           <h1 className="logo">🎬Flickfinder🍿</h1>
         </Link>
-
-        <Searchbar setQuery={setQuery} />
+        <div className="w-full px-4 sm:px-6 md:px-8 mx-auto max-w-xl">
+          <Searchbar setQuery={setQuery} />
+        </div>
       </div>
     </header>
   );

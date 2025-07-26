@@ -4,7 +4,7 @@ import MovieCard from "./MovieCard";
 export default function movieGrid({ movies }) {
   return (
     <div className="movie-grid">
-      {movies.map((m) => (
+      {movies.slice(0, 6).map((m) => (
         <MovieCard key={m.id} movie={m} />
       ))}
     </div>

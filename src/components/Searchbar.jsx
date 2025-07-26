@@ -7,17 +7,25 @@ const Searchbar = ({ setQuery }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (searchText.trim()) {
-      navigate(`search/${encodeURIComponent(searchText)}`);
+    const query = searchText.trim();
+    if(query){
+      //sent query to parent
+      if(setQuery){
+        setQuery(query)
+      }
+      navigate(`/search/${encodeURIComponent(query)}`)
     }
-    // setQuery(searchText);
+    // if (searchText.trim()) {
+    //   navigate(`/search/${encodeURIComponent(searchText)}`);
+    // }
+    // // setQuery(searchText);
   };
   return (
     <div className="search__bar">
       <form
         id="search__form"
         onSubmit={handleSubmit}
-        className="flex items-center gap-2"
+        className="flex items-center gap-2 w-full"
       >
         <input
           type="text"
@@ -25,11 +33,11 @@ const Searchbar = ({ setQuery }) => {
           placeholder="Search movies"
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
-          className="px-4 py-2 rounded-lg bg-white/10 text-white backdrop-blur w-full max-w-sm "
+          className="px-4 py-2 rounded-md bg-white/10 text-white backdrop-blur w-full max-w-sm sm:placeholder:text-sm"
         />
         <button
           type="submit"
-          className="bg-green-500 hover:bg-green-600 px-4 py-2 rounded-md text-white text-sm sm:text-base placeholder:text-xs sm:placeholder:text-sm text-black"
+          className="bg-green-500 hover:bg-green-600 px-4 py-2 rounded-lg text-white"
         >
           Search
         </button>
